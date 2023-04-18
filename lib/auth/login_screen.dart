@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_tsel/auth/verify_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(top: 80, left: 15, right: 15),
         child: Column(
@@ -105,7 +107,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 minimumSize: const Size.fromHeight(40.0),
                 backgroundColor: const Color(0xFFEC2028),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const VerifyScreen(),
+                  ),
+                );
+              },
               child: Text(
                 'Lanjut'.toUpperCase(),
                 style: GoogleFonts.poppins(
@@ -136,48 +144,46 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      AntIcons.facebookFilled,
-                      color: Color(0xFF3B5998),
-                    ),
-                    label: Text(
-                      'Facebook',
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF3B5998)),
+                      onPressed: () {},
+                      icon: const Icon(
+                        AntIcons.facebookFilled,
+                        color: Color(0xFF3B5998),
                       ),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Color(0xFF3B5998)),
-                    )
-                  ),
+                      label: Text(
+                        'Facebook',
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF3B5998)),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Color(0xFF3B5998)),
+                      )),
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                 ),
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      AntIcons.twitterSquareFilled,
-                      color: Color(0xFF1DA1F2),
-                    ),
-                    label: Text(
-                      'Twitter',
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF1DA1F2)),
+                      onPressed: () {},
+                      icon: const Icon(
+                        AntIcons.twitterSquareFilled,
+                        color: Color(0xFF1DA1F2),
                       ),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Color(0xFF1DA1F2)),
-                    )
-                  ),
+                      label: Text(
+                        'Twitter',
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF1DA1F2)),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Color(0xFF1DA1F2)),
+                      )),
                 )
               ],
             )
