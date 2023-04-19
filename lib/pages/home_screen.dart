@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,14 +12,60 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-          children: [
-            Stack(
-              children: const [
-                Text('test dua tigas'),
-                Text('test1')
-              ],
+        appBar: AppBar(
+          backgroundColor: const Color(0xFFEC2028),
+          elevation: 0.0,
+          title: RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                text: 'Hai, ',
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              TextSpan(
+                text: 'Muhammad',
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              )
+            ]),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.qr_code_2_sharp,
+              ),
+              color: Colors.white,
             )
+          ],
+        ),
+        body: Stack(
+          children: [
+            ClipPath(
+              clipper: HeadingClip(),
+              child: Container(
+                margin: const EdgeInsets.only(top: 20.0),
+                height: 250.0,
+                child: ListView(
+                  children: const [
+                    Text('Test')
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.amber,
+            ),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -48,4 +95,26 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ));
   }
+}
+
+class HeadingClip extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 70);
+    path.quadraticBezierTo(
+      size.width / 2,
+      size.height,
+      size.width,
+      size.height - 70,
+    );
+
+    path.lineTo(size.width, 0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }
