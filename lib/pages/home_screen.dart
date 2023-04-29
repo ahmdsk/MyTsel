@@ -9,6 +9,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<Map<String, dynamic>> infoKartu = [
+    {
+      'layanan': 'Internet',
+      'jumlah': 12.19,
+      'satuan': 'GB',
+    },
+    {
+      'layanan': 'Telepon',
+      'jumlah': 0,
+      'satuan': 'Min',
+    },
+    {
+      'layanan': 'SMS',
+      'jumlah': 23,
+      'satuan': 'SMS',
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         clipper: MyCardClip(),
                         child: Container(
                           padding: const EdgeInsets.all(15.0),
-                          margin:
-                              const EdgeInsets.symmetric(horizontal: 25.0),
+                          margin: const EdgeInsets.symmetric(horizontal: 25.0),
                           // height: 200.0,
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(colors: [
@@ -159,8 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           TextSpan(
                                               text: '19 April 2020',
                                               style: TextStyle(
-                                                  fontWeight:
-                                                      FontWeight.w800))
+                                                  fontWeight: FontWeight.w800))
                                         ]),
                                   ),
                                   Row(
@@ -198,7 +214,71 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: List.generate(
+                            infoKartu.length,
+                            (index) {
+                              return Container(
+                                width: 100,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10.0,
+                                  vertical: 8.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: const Color(0xFF102535)
+                                            .withOpacity(.08),
+                                        blurRadius: 16,
+                                        offset: const Offset(0, 2)),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      infoKartu[index]['layanan'],
+                                      style: GoogleFonts.poppins(
+                                        color: const Color(0xFF1E272E),
+                                      ),
+                                    ),
+                                    RichText(
+                                      text: TextSpan(
+                                          text: infoKartu[index]['jumlah'].toString(),
+                                          style: GoogleFonts.poppins(
+                                            color: const Color(0xFFEC2028),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 24,
+                                          ),
+                                          children: [
+                                            TextSpan(
+                                              text: ' ${infoKartu[index]['satuan']}',
+                                              style: GoogleFonts.poppins(
+                                                color: const Color(0xFF747D8C),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ]),
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                     ],
                   ),
                   Container(
