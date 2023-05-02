@@ -120,6 +120,17 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
 
+  List<Map<String, dynamic>> bannerPenawaran = [
+    {
+      'image': 'images/banner_penawaran/banner_penawaran_1.png',
+      'text': 'Terus Belajar dari Rumahmu dengan Ruangguru!'
+    },
+    {
+      'image': 'images/banner_penawaran/banner_penawaran_2.png',
+      'text': 'Belajar Kini Makin Mudah dengan Paket ilmupedia!'
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -705,6 +716,84 @@ class _HomeScreenState extends State<HomeScreen> {
                                     padding: const EdgeInsets.all(10.0),
                                     child: Text(
                                       bannerVoucher[index]['text'],
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(25.0),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Penawaran Khusus',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                            ),
+                          ),
+                          Text(
+                            'Lihat Semua',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: const Color(0xFFEC2028),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(bannerPenawaran.length, (index) {
+                            return Container(
+                              width: 350.0,
+                              height: 235.0,
+                              margin: const EdgeInsets.only(
+                                right: 20.0,
+                                bottom: 10.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(6.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xFF102535)
+                                        .withOpacity(.08),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    bannerPenawaran[index]['image'],
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      bannerPenawaran[index]['text'],
                                       style: GoogleFonts.poppins(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 18,
