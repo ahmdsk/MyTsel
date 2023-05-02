@@ -101,6 +101,25 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
 
+  List<Map<String, dynamic>> bannerVoucher = [
+    {
+      'image': 'images/banner_voucher/banner_voucher_1.png',
+      'text': 'Double Benefits from DOUBLE UNTUNG'
+    },
+    {
+      'image': 'images/banner_voucher/banner_voucher_2.png',
+      'text': 'Join Undi-Undi Hepi 2020!'
+    },
+    {
+      'image': 'images/banner_voucher/banner_voucher_3.png',
+      'text': 'Get Samsung Galaxy S20 Series with Best kartuHalo ...'
+    },
+    {
+      'image': 'images/banner_voucher/banner_voucher_4.png',
+      'text': 'Mau Dapetin Konten Favorit? Ke Outlet Pulsa Aja!'
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -570,9 +589,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         'Pakai LinkAja untuk beli pulsa, beli paket data dan bayar tagihan lebih mudah.',
                         style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          color: const Color(0xFF1E272E)
-                        ),
+                            fontSize: 18, color: const Color(0xFF1E272E)),
                       ),
                       const SizedBox(
                         height: 10,
@@ -610,6 +627,84 @@ class _HomeScreenState extends State<HomeScreen> {
                                     padding: const EdgeInsets.all(10.0),
                                     child: Text(
                                       iklanBanner[index]['text'],
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(25.0),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Cari Voucher, Yuk!',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                            ),
+                          ),
+                          Text(
+                            'Lihat Semua',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: const Color(0xFFEC2028),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(bannerVoucher.length, (index) {
+                            return Container(
+                              width: 350.0,
+                              height: 235.0,
+                              margin: const EdgeInsets.only(
+                                right: 20.0,
+                                bottom: 10.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(6.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xFF102535)
+                                        .withOpacity(.08),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    bannerVoucher[index]['image'],
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      bannerVoucher[index]['text'],
                                       style: GoogleFonts.poppins(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 18,
