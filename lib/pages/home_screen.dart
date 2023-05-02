@@ -27,6 +27,41 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   ];
 
+  List<Map<String, dynamic>> kategoriPaket = [
+    {
+      'logo': 'images/Icon_Internet.png',
+      'nama': 'Internet',
+    },
+    {
+      'logo': 'images/Icon_Telpon.png',
+      'nama': 'Telpon',
+    },
+    {
+      'logo': 'images/Icon_SMS.png',
+      'nama': 'SMS',
+    },
+    {
+      'logo': 'images/Icon_Roaming.png',
+      'nama': 'Roaming',
+    },
+    {
+      'logo': 'images/Icon_Hiburan.png',
+      'nama': 'Hiburan',
+    },
+    {
+      'logo': 'images/Icon_Unggulan.png',
+      'nama': 'Unggulan',
+    },
+    {
+      'logo': 'images/Icon_Tersimpan.png',
+      'nama': 'Tersimpan',
+    },
+    {
+      'logo': 'images/Icon_Riwayat.png',
+      'nama': 'Riwayat',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               TextSpan(
-                text: 'Muhammad',
+                text: 'Ahmadd',
                 style: GoogleFonts.poppins(
                   textStyle: const TextStyle(
                     color: Colors.white,
@@ -72,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ClipPath(
               clipper: HeadingClip(),
               child: Container(
-                height: 250.0,
+                height: 200.0,
                 color: const Color(0xFFEC2028),
               ),
             ),
@@ -160,8 +195,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               const SizedBox(
                                 height: 5.0,
                               ),
-                              const Divider(
-                                color: Color(0xFF1E272E),
+                              Divider(
+                                color:
+                                    const Color(0xFF1E272E).withOpacity(0.25),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 15,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -253,7 +289,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     RichText(
                                       text: TextSpan(
-                                          text: infoKartu[index]['jumlah'].toString(),
+                                          text: infoKartu[index]['jumlah']
+                                              .toString(),
                                           style: GoogleFonts.poppins(
                                             color: const Color(0xFFEC2028),
                                             fontWeight: FontWeight.w600,
@@ -261,7 +298,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           children: [
                                             TextSpan(
-                                              text: ' ${infoKartu[index]['satuan']}',
+                                              text:
+                                                  ' ${infoKartu[index]['satuan']}',
                                               style: GoogleFonts.poppins(
                                                 color: const Color(0xFF747D8C),
                                                 fontSize: 14,
@@ -277,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 25,
                       ),
                     ],
                   ),
@@ -287,7 +325,62 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.blue,
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      color: Colors.white,
+                      child: ListView(
+                        children: [
+                          Text(
+                            'Kategori Paket',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          GridView(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 4,
+                              mainAxisSpacing: 20.0,
+                              crossAxisSpacing: 10.0,
+                            ),
+                            children: List.generate(
+                              kategoriPaket.length,
+                              (index) {
+                                return Column(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        padding: const EdgeInsets.all(12.0),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFF7B731)
+                                              .withOpacity(0.15),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        ),
+                                        child: Image.asset(
+                                          kategoriPaket[index]['logo'],
+                                          width: 35.0,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      kategoriPaket[index]['nama'],
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
