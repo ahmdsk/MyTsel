@@ -86,6 +86,21 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
 
+  List<Map<String, dynamic>> iklanBanner = [
+    {
+      'image': 'images/banner_linkaja/banner_linkaja_1.png',
+      'text': 'Bayar Serba Cepat'
+    },
+    {
+      'image': 'images/banner_linkaja/banner_linkaja_2.png',
+      'text': 'Cukup Snap QR'
+    },
+    {
+      'image': 'images/banner_linkaja/banner_linkaja_3.png',
+      'text': 'NO! Credit Card'
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -535,7 +550,81 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
-                )
+                ),
+                Container(
+                  padding: const EdgeInsets.all(25.0),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'AYO! Pake LinkAja!',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Pakai LinkAja untuk beli pulsa, beli paket data dan bayar tagihan lebih mudah.',
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          color: const Color(0xFF1E272E)
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(iklanBanner.length, (index) {
+                            return Container(
+                              width: 200.0,
+                              margin: const EdgeInsets.only(
+                                right: 20.0,
+                                bottom: 10.0,
+                              ),
+                              padding: const EdgeInsets.only(bottom: 5.0),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(6.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xFF102535)
+                                        .withOpacity(.08),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    iklanBanner[index]['image'],
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      iklanBanner[index]['text'],
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
