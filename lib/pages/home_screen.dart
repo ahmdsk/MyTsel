@@ -29,40 +29,62 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Map<String, dynamic>> kategoriPaket = [
     {
-      'logo': 'images/Icon_Internet.png',
+      'logo': 'images/icons/Icon_Internet.png',
       'nama': 'Internet',
     },
     {
-      'logo': 'images/Icon_Telpon.png',
+      'logo': 'images/icons/Icon_Telpon.png',
       'nama': 'Telpon',
     },
     {
-      'logo': 'images/Icon_SMS.png',
+      'logo': 'images/icons/Icon_SMS.png',
       'nama': 'SMS',
     },
     {
-      'logo': 'images/Icon_Roaming.png',
+      'logo': 'images/icons/Icon_Roaming.png',
       'nama': 'Roaming',
     },
     {
-      'logo': 'images/Icon_Hiburan.png',
+      'logo': 'images/icons/Icon_Hiburan.png',
       'nama': 'Hiburan',
     },
     {
-      'logo': 'images/Icon_Unggulan.png',
+      'logo': 'images/icons/Icon_Unggulan.png',
       'nama': 'Unggulan',
     },
     {
-      'logo': 'images/Icon_Tersimpan.png',
+      'logo': 'images/icons/Icon_Tersimpan.png',
       'nama': 'Tersimpan',
     },
     {
-      'logo': 'images/Icon_Riwayat.png',
+      'logo': 'images/icons/Icon_Riwayat.png',
       'nama': 'Riwayat',
     },
   ];
 
-  List bannerImage = ['images/Banner_1.png', 'images/Banner_2.png'];
+  List bannerImage = [
+    'images/banner/Banner_1.png',
+    'images/banner/Banner_2.png'
+  ];
+
+  List<Map<String, dynamic>> bannerCovid = [
+    {
+      'image': 'images/berita_covid/Banner_1.png',
+      'text': 'Diskon Spesial 25% Untuk Pelanggan Baru'
+    },
+    {
+      'image': 'images/berita_covid/Banner_2.png',
+      'text': 'Bebas Kuota Akses Layanan Kesehatan'
+    },
+    {
+      'image': 'images/berita_covid/Banner_3.png',
+      'text': 'Telkomsel #TerusBergerakMaju ...'
+    },
+    {
+      'image': 'images/berita_covid/Banner_4.png',
+      'text': '#DiRumahTerusProduktif'
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -362,6 +384,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisSpacing: 20.0,
                                 crossAxisSpacing: 10.0,
                               ),
+                              physics: const NeverScrollableScrollPhysics(),
                               children: List.generate(
                                 kategoriPaket.length,
                                 (index) {
@@ -429,7 +452,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
-                                children: List.generate(bannerImage.length, (index) {
+                                children:
+                                    List.generate(bannerImage.length, (index) {
                                   return Container(
                                     margin: const EdgeInsets.only(right: 20.0),
                                     child: Image.asset(
@@ -447,6 +471,71 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                Container(
+                  padding: const EdgeInsets.all(25.0),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Tanggap COVID-19',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(bannerCovid.length, (index) {
+                            return Container(
+                              width: 350.0,
+                              height: 230.0,
+                              margin: const EdgeInsets.only(
+                                right: 20.0,
+                                bottom: 10.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(6.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xFF102535)
+                                        .withOpacity(.08),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    bannerCovid[index]['image'],
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      bannerCovid[index]['text'],
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                        ),
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ],
